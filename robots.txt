@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /404.html
 
-Sitemap: https://amanfolioo.netlify.app/sitemap.xml
+Sitemap: https://aman179102.netlify.app/sitemap.xml

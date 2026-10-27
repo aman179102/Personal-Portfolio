@@ -2,7 +2,7 @@
 
 Static portfolio and engineering case studies for Aman Kumar, a full-stack software engineer building web products, developer tools, and distributed systems.
 
-Live: [amanfolioo.netlify.app](https://amanfolioo.netlify.app/)
+Live: [aman179102.netlify.app](https://aman179102.netlify.app/)
 
 ## Stack
 
