@@ -1,0 +1,24 @@
+{
+  "name": "Aman Kumar — Software Engineer",
+  "short_name": "Aman Kumar",
+  "description": "Portfolio and engineering case studies by Aman Kumar, a full-stack software engineer building web products, developer tools, and distributed systems.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f2efe6",
+  "theme_color": "#c9f45f",
+  "icons": [
+    {
+      "src": "/assets/img/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/img/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
