@@ -64,7 +64,7 @@ Every page includes:
 
 - A unique title, description, and canonical URL
 - Open Graph and Twitter Card metadata
-- A shared `Person` entity with `sameAs` links to GitHub, LinkedIn, X, Instagram, Dev.to, and LeetCode
+- A shared `Person` entity with `sameAs` links to GitHub, Gists, LinkedIn, X, Dev.to, Qiita, Velog, itch.io, daily.dev, and LeetCode
 - `WebSite` and page-level JSON-LD
 - Breadcrumb structured data on case studies
 - `SoftwareSourceCode` structured data on project pages
