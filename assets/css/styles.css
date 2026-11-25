@@ -1241,10 +1241,21 @@ ol {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr 0.8fr;
-  gap: 50px;
+  grid-template-columns: 1.5fr repeat(4, 1fr);
+  gap: 36px;
   padding-bottom: 46px;
   border-bottom: 1px solid var(--line);
+}
+
+@media (max-width: 1040px) {
+  .footer-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 36px 20px;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
 }
 
 .footer-brand p {
@@ -2339,7 +2350,8 @@ ol {
   }
 
   .footer-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 36px 24px;
   }
 
   .footer-brand {
@@ -2462,12 +2474,12 @@ ol {
   }
 
   .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 32px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 18px;
   }
 
   .footer-brand {
-    grid-column: auto;
+    grid-column: 1 / -1;
   }
 
   .footer-bottom {
