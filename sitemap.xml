@@ -7,6 +7,18 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://aman179102.netlify.app/press/</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aman179102.netlify.app/press/sysprobe-release-2026.html</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://aman179102.netlify.app/research/</loc>
     <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
