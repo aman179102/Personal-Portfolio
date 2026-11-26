@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sysprobe: Real-Time Non-Invasive Linux Kernel Diagnostics via Virtual Procfs Extraction — Aman Kumar</title>
+  
+  <!-- Canonical & Social Metadata -->
+  <link rel="canonical" href="https://aman179102.netlify.app/research/sysprobe.html">
+  <meta name="description" content="Academic systems research paper by Aman Kumar detailing sysprobe: a zero-dependency Linux kernel diagnostics architecture utilizing direct procfs and sysfs telemetry extraction.">
+  <meta name="author" content="Aman Kumar">
+  <meta property="og:title" content="sysprobe: Real-Time Non-Invasive Linux Kernel Diagnostics via Virtual Procfs Extraction">
+  <meta property="og:description" content="Research whitepaper by Aman Kumar (@aman179102). Sub-4ms overhead, <1.2MB RSS, zero-dependency POSIX diagnostics.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://aman179102.netlify.app/research/sysprobe.html">
+
+  <!-- Google Scholar / Highwire Press Meta Tags -->
+  <meta name="citation_title" content="sysprobe: Real-Time Non-Invasive Linux Kernel Diagnostics via Virtual Procfs Extraction">
+  <meta name="citation_author" content="Kumar, Aman">
+  <meta name="citation_author_orcid" content="https://orcid.org/0009-0002-5219-5949">
+  <meta name="citation_author_institution" content="Independent Systems Researcher">
+  <meta name="citation_publication_date" content="2026/11/26">
+  <meta name="citation_date" content="2026/11/26">
+  <meta name="citation_journal_title" content="Systems & Infrastructure Engineering Preprints">
+  <meta name="citation_pdf_url" content="https://aman179102.netlify.app/research/sysprobe_linux_kernel_diagnostics_whitepaper.pdf">
+  <meta name="citation_abstract_html_url" content="https://aman179102.netlify.app/research/sysprobe.html">
+  <meta name="citation_keywords" content="Linux Kernel; Systems Observability; Procfs; Performance Benchmarking; Tokyo Night ANSI; Operating Systems">
+  <meta name="citation_language" content="en">
+
+  <!-- Dublin Core Metadata -->
+  <meta name="DC.title" content="sysprobe: Real-Time Non-Invasive Linux Kernel Diagnostics via Virtual Procfs Extraction">
+  <meta name="DC.creator" content="Aman Kumar">
+  <meta name="DC.date" content="2026-11-26">
+  <meta name="DC.format" content="application/pdf">
+  <meta name="DC.language" content="en">
+  <meta name="DC.type" content="Text">
+
+  <!-- Schema.org ScholarlyArticle -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "sysprobe: Real-Time Non-Invasive Linux Kernel Diagnostics via Virtual Procfs Extraction",
+    "name": "sysprobe: Real-Time Non-Invasive Linux Kernel Diagnostics via Virtual Procfs Extraction",
+    "author": {
+      "@type": "Person",
+      "name": "Aman Kumar",
+      "url": "https://aman179102.netlify.app/",
+      "sameAs": [
+        "https://orcid.org/0009-0002-5219-5949",
+        "https://scholar.google.com/citations?user=cVhFkv4AAAAJ",
+        "https://www.wikidata.org/wiki/Q142288884",
+        "https://github.com/aman179102"
+      ]
+    },
+    "datePublished": "2026-11-26",
+    "url": "https://aman179102.netlify.app/research/sysprobe.html",
+    "encoding": {
+      "@type": "MediaObject",
+      "contentUrl": "https://aman179102.netlify.app/research/sysprobe_linux_kernel_diagnostics_whitepaper.pdf",
+      "encodingFormat": "application/pdf"
+    },
+    "about": ["Linux Kernel", "Operating Systems", "Observability", "Systems Diagnostics", "Procfs"],
+    "keywords": "Linux Kernel, Systems Observability, Procfs, Performance Benchmarking, Tokyo Night ANSI"
+  }
+  </script>
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+    .paper-hero { max-width: 840px; margin: 4rem auto 2rem; padding: 0 1.5rem; }
+    .paper-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(37,99,235,0.1); color: #2563eb; font-size: 0.8rem; font-weight: 600; padding: 0.35rem 0.75rem; border-radius: 9999px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem; }
+    .paper-title { font-size: 2.25rem; line-height: 1.25; font-weight: 800; color: var(--color-text); margin-bottom: 1.25rem; }
+    .paper-meta { display: flex; flex-wrap: wrap; gap: 1.25rem; font-size: 0.95rem; color: var(--color-muted); margin-bottom: 2rem; border-bottom: 1px solid var(--color-border); padding-bottom: 1.5rem; }
+    .paper-meta a { color: var(--color-accent); text-decoration: none; font-weight: 600; }
+    .paper-abstract { background: var(--color-card-bg, #f8fafc); border-left: 4px solid #2563eb; padding: 1.5rem; border-radius: 0 8px 8px 0; font-size: 1rem; line-height: 1.7; color: var(--color-text); margin-bottom: 2rem; }
+    .paper-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 3rem; }
+    .btn-download { display: inline-flex; align-items: center; gap: 0.5rem; background: #2563eb; color: #fff; font-weight: 600; padding: 0.8rem 1.6rem; border-radius: 8px; text-decoration: none; transition: transform 0.2s, background 0.2s; }
+    .btn-download:hover { background: #1d4ed8; transform: translateY(-2px); }
+    .btn-secondary { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; border: 1px solid var(--color-border); color: var(--color-text); font-weight: 600; padding: 0.8rem 1.4rem; border-radius: 8px; text-decoration: none; }
+    .paper-body { font-size: 1.05rem; line-height: 1.8; color: var(--color-text); }
+    .paper-body h2 { font-size: 1.4rem; font-weight: 700; margin: 2rem 0 1rem; }
+    .paper-body pre { background: #0f172a; color: #f8fafc; padding: 1.25rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; margin: 1.5rem 0; }
+  </style>
+</head>
+<body>
+  <div class="paper-hero">
+    <a href="/research/" style="color: var(--color-muted); text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.35rem; margin-bottom: 1.5rem;">&larr; All Research Publications</a>
+    <div class="paper-badge">Academic Whitepaper &bull; IEEE Grade</div>
+    <h1 class="paper-title">sysprobe: Real-Time Non-Invasive Linux Kernel Diagnostics via Virtual Procfs Extraction</h1>
+    
+    <div class="paper-meta">
+      <div><strong>Author:</strong> <a href="/">Aman Kumar (@aman179102)</a></div>
+      <div><strong>ORCID:</strong> <a href="https://orcid.org/0009-0002-5219-5949" target="_blank" rel="noopener">0009-0002-5219-5949</a></div>
+      <div><strong>Scholar:</strong> <a href="https://scholar.google.com/citations?user=cVhFkv4AAAAJ" target="_blank" rel="noopener">cVhFkv4AAAAJ</a></div>
+      <div><strong>Date:</strong> November 2026</div>
+    </div>
+
+    <div class="paper-actions">
+      <a class="btn-download" href="/research/sysprobe_linux_kernel_diagnostics_whitepaper.pdf" target="_blank">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        Download Full Paper (PDF)
+      </a>
+      <a class="btn-secondary" href="https://github.com/aman179102/sysprobe" target="_blank" rel="noopener">GitHub Repository</a>
+      <a class="btn-secondary" href="https://gitlab.com/aman179102/sysprobe" target="_blank" rel="noopener">GitLab Repository</a>
+      <a class="btn-secondary" href="https://codeberg.org/aman179102/sysprobe" target="_blank" rel="noopener">Codeberg Repository</a>
+    </div>
+
+    <div class="paper-abstract">
+      <strong>Abstract:</strong> Enterprise Linux monitoring frameworks introduce non-trivial diagnostic perturbation (up to 8% CPU saturation and tens of megabytes of resident memory) during severe system degradation events. In this paper, we introduce <strong>sysprobe</strong>, an ultra-lightweight, zero-dependency systems diagnostic architecture engineered in POSIX-conforming primitives that extracts real-time kernel telemetry directly from synthetic virtual filesystems (<code>/proc</code> and <code>/sys</code>). By eliminating third-party agent runtimes and parsing kernel memory accounting and network socket tables via single-pass userspace streaming filters, sysprobe achieves sub-4ms wall-clock diagnostics with less than 1.2MB peak RSS footprint. We formalize the mathematical model of monitoring observer effects under heavy thrashing, evaluate empirical micro-benchmarks against standard APM agents, and present open-source reproducibility artifacts indexed across international software registries.
+    </div>
+
+    <div class="paper-body">
+      <h2>I. Key Architectural Takeaways</h2>
+      <p>Standard APM daemons (Prometheus node_exporter, Datadog Agent) often fail or compound thrashing during 3:00 AM production degradation incidents. By contrast, sysprobe interfaces directly with synthetic kernel filesystems:</p>
+      <ul>
+        <li><strong>Zero Runtime Dependencies:</strong> Pure POSIX shell implementation eliminates Python, Node.js, and Go runloop overhead.</li>
+        <li><strong>Sub-4ms Execution Latency:</strong> 5.3x faster execution than Prometheus node_exporter.</li>
+        <li><strong>1.18 MB Peak Resident Memory:</strong> 24x lower memory footprint than Go-based monitoring daemons.</li>
+        <li><strong>Instant Tokyo Night ANSI Rendering:</strong> Visual memory pressure bars and socket buffer backlogs in a single terminal frame.</li>
+      </ul>
+
+      <h2>II. Universal Reproduction Snippet</h2>
+      <pre><code># 1-Line Zero-Dependency Direct Installation:
+curl -fsSL https://aman179102.netlify.app/install.sh | bash
+
+# Run JSON machine-readable diagnostics:
+sysprobe --json</code></pre>
+
+      <h2>III. Citation BibTeX</h2>
+      <pre><code>@article{kumar2026sysprobe,
+  title={sysprobe: Real-Time Non-Invasive Linux Kernel Diagnostics via Virtual Procfs Extraction},
+  author={Kumar, Aman},
+  journal={Systems & Infrastructure Engineering Preprints},
+  year={2026},
+  publisher={Aman Kumar},
+  doi={10.5281/zenodo.24493466},
+  url={https://aman179102.netlify.app/research/sysprobe.html}
+}</code></pre>
+    </div>
+  </div>
+</body>
+</html>

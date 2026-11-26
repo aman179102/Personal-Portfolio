@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Systems Engineering Research & Academic Publications — Aman Kumar</title>
+  
+  <link rel="canonical" href="https://aman179102.netlify.app/research/">
+  <meta name="description" content="Academic research papers, whitepapers, and empirical systems benchmarks authored by Aman Kumar (@aman179102). Topics: Linux kernel observability, io_uring, and eBPF.">
+  <meta name="author" content="Aman Kumar">
+  <meta property="og:title" content="Systems Engineering Research Publications — Aman Kumar">
+  <meta property="og:description" content="Peer-reviewed and empirical systems preprints authored by Aman Kumar. Sub-millisecond kernel diagnostics and high-throughput networking.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aman179102.netlify.app/research/">
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+    .research-container { max-width: 900px; margin: 4rem auto; padding: 0 1.5rem; }
+    .page-title { font-size: 2.75rem; font-weight: 800; line-height: 1.2; margin-bottom: 0.75rem; color: var(--color-text); }
+    .page-sub { font-size: 1.2rem; color: var(--color-muted); line-height: 1.6; margin-bottom: 2.5rem; }
+    .badges-row { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 3rem; }
+    .badge-pill { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--color-card-bg, #f1f5f9); border: 1px solid var(--color-border); padding: 0.5rem 1rem; border-radius: 9999px; font-size: 0.85rem; font-weight: 600; color: var(--color-text); text-decoration: none; }
+    .badge-pill:hover { border-color: var(--color-accent); color: var(--color-accent); }
+    .paper-card { background: var(--color-card-bg, #ffffff); border: 1px solid var(--color-border); border-radius: 12px; padding: 2rem; margin-bottom: 2rem; transition: transform 0.2s, box-shadow 0.2s; }
+    .paper-card:hover { transform: translateY(-3px); box-shadow: 0 12px 24px -10px rgba(0,0,0,0.08); }
+    .paper-card-tag { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #2563eb; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+    .paper-card-title { font-size: 1.5rem; font-weight: 700; line-height: 1.35; margin-bottom: 0.75rem; color: var(--color-text); }
+    .paper-card-title a { color: inherit; text-decoration: none; }
+    .paper-card-title a:hover { color: #2563eb; }
+    .paper-card-meta { font-size: 0.85rem; color: var(--color-muted); margin-bottom: 1rem; }
+    .paper-card-desc { font-size: 0.95rem; line-height: 1.6; color: var(--color-text); margin-bottom: 1.5rem; }
+    .paper-card-links { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .btn-card { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; font-weight: 600; padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none; }
+    .btn-card-primary { background: #2563eb; color: #fff; }
+    .btn-card-primary:hover { background: #1d4ed8; }
+    .btn-card-secondary { background: transparent; border: 1px solid var(--color-border); color: var(--color-text); }
+  </style>
+</head>
+<body>
+  <div class="research-container">
+    <a href="/" style="color: var(--color-muted); text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.35rem; margin-bottom: 2rem;">&larr; Back to Portfolio Home</a>
+    
+    <h1 class="page-title">Systems Engineering Research &amp; Whitepapers</h1>
+    <p class="page-sub">Academic preprints, empirical Linux kernel performance benchmarks, and high-concurrency distributed systems research by <strong>Aman Kumar (@aman179102)</strong>.</p>
+
+    <div class="badges-row">
+      <a class="badge-pill" href="https://scholar.google.com/citations?user=cVhFkv4AAAAJ" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 1 9l11 6 9-4.91V17h2V9L12 3zM3.45 13.47 12 18.12l8.55-4.65v2.86L12 21l-8.55-4.67v-2.86z"/></svg>
+        Google Scholar (cVhFkv4AAAAJ)
+      </a>
+      <a class="badge-pill" href="https://orcid.org/0009-0002-5219-5949" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm-3.2 18.3H6.5V7.7h2.3v10.6zm-1.2-12c-.8 0-1.4-.6-1.4-1.4s.6-1.4 1.4-1.4c.8 0 1.4.6 1.4 1.4s-.6 1.4-1.4 1.4zm10.7 7.7c0 2.5-1.7 4.3-4.5 4.3h-3.9V7.7h4.1c2.6 0 4.3 1.7 4.3 4.3v2z"/></svg>
+        ORCID iD (0009-0002-5219-5949)
+      </a>
+      <a class="badge-pill" href="https://doi.org/10.5281/zenodo.24493466" target="_blank" rel="noopener">
+        CERN Zenodo DOI: 10.5281/zenodo.24493466
+      </a>
+      <a class="badge-pill" href="https://www.wikidata.org/wiki/Q142288884" target="_blank" rel="noopener">
+        Wikidata Q142288884
+      </a>
+    </div>
+
+    <!-- Paper 1: sysprobe -->
+    <article class="paper-card">
+      <div class="paper-card-tag">Systems Diagnostics &bull; Linux Kernel</div>
+      <h2 class="paper-card-title"><a href="/research/sysprobe.html">sysprobe: Real-Time Non-Invasive Linux Kernel Diagnostics via Virtual Procfs Extraction</a></h2>
+      <div class="paper-card-meta">Aman Kumar &bull; November 2026 &bull; IEEE Grade PDF</div>
+      <p class="paper-card-desc">Evaluates the Heavy Monitoring Paradox during acute production incidents and introduces sysprobe: a zero-dependency CLI extracting memory pressure and socket buffer metrics directly from /proc with sub-4ms execution and &lt;1.2MB memory.</p>
+      <div class="paper-card-links">
+        <a class="btn-card btn-card-primary" href="/research/sysprobe_linux_kernel_diagnostics_whitepaper.pdf" target="_blank">Download PDF</a>
+        <a class="btn-card btn-card-secondary" href="/research/sysprobe.html">Abstract &amp; Citation</a>
+        <a class="btn-card btn-card-secondary" href="https://github.com/aman179102/sysprobe" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn-card btn-card-secondary" href="https://gitlab.com/aman179102/sysprobe" target="_blank" rel="noopener">GitLab</a>
+      </div>
+    </article>
+
+    <!-- Paper 2: io_uring -->
+    <article class="paper-card">
+      <div class="paper-card-tag">I/O Multiplexing &bull; Cloud Gateways</div>
+      <h2 class="paper-card-title"><a href="/research/iouring.html">Linux io_uring vs epoll I/O Multiplexing in High-Throughput Distributed Cloud Gateways</a></h2>
+      <div class="paper-card-meta">Aman Kumar &bull; November 2026 &bull; DOI: 10.5281/zenodo.24493466</div>
+      <p class="paper-card-desc">Empirical tail-latency evaluation across 100,000 persistent TCP connections demonstrating 73.4% p99 reduction utilizing io_uring circular ring buffers and SQPOLL kernel threads.</p>
+      <div class="paper-card-links">
+        <a class="btn-card btn-card-primary" href="/research/iouring_vs_epoll_gateway_benchmarks_whitepaper.pdf" target="_blank">Download PDF</a>
+        <a class="btn-card btn-card-secondary" href="/research/iouring.html">Abstract &amp; Citation</a>
+        <a class="btn-card btn-card-secondary" href="https://github.com/aman179102/awesome-iouring" target="_blank" rel="noopener">awesome-iouring</a>
+      </div>
+    </article>
+
+    <!-- Paper 3: eBPF -->
+    <article class="paper-card">
+      <div class="paper-card-tag">eBPF Telemetry &bull; Microservices</div>
+      <h2 class="paper-card-title"><a href="/research/ebpf.html">High-Throughput eBPF Telemetry Benchmarks in Distributed Microservice Architectures</a></h2>
+      <div class="paper-card-meta">Aman Kumar &bull; November 2026 &bull; DOI: 10.5281/zenodo.24493466</div>
+      <p class="paper-card-desc">Non-invasive L4/L7 socket accounting using BPF memory-mapped ring buffers (BPF_MAP_TYPE_RINGBUF) with sub-0.5% CPU degradation under 500,000 requests/sec.</p>
+      <div class="paper-card-links">
+        <a class="btn-card btn-card-primary" href="/research/ebpf_telemetry_benchmarks_whitepaper.pdf" target="_blank">Download PDF</a>
+        <a class="btn-card btn-card-secondary" href="/research/ebpf.html">Abstract &amp; Citation</a>
+        <a class="btn-card btn-card-secondary" href="https://huggingface.co/datasets/aman179102/distributed-systems-benchmarks" target="_blank" rel="noopener">Datasets</a>
+      </div>
+    </article>
+  </div>
+</body>
+</html>

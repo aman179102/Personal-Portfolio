@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>High-Throughput eBPF Telemetry Benchmarks in Distributed Microservice Architectures — Aman Kumar</title>
+  
+  <link rel="canonical" href="https://aman179102.netlify.app/research/ebpf.html">
+  <meta name="description" content="Academic systems research whitepaper by Aman Kumar benchmarking eBPF BPF-ring-buffer telemetry overhead in high-throughput distributed microservice clusters.">
+  <meta name="author" content="Aman Kumar">
+  <meta property="og:title" content="High-Throughput eBPF Telemetry Benchmarks in Distributed Microservice Architectures">
+  <meta property="og:description" content="Research whitepaper by Aman Kumar (@aman179102). In-kernel BPF map filtering, zero-copy socket accounting.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://aman179102.netlify.app/research/ebpf.html">
+
+  <!-- Google Scholar / Highwire Press Meta Tags -->
+  <meta name="citation_title" content="High-Throughput eBPF Telemetry Benchmarks in Distributed Microservice Architectures">
+  <meta name="citation_author" content="Kumar, Aman">
+  <meta name="citation_author_orcid" content="https://orcid.org/0009-0002-5219-5949">
+  <meta name="citation_author_institution" content="Independent Systems Researcher">
+  <meta name="citation_publication_date" content="2026/11/24">
+  <meta name="citation_date" content="2026/11/24">
+  <meta name="citation_journal_title" content="Systems & Infrastructure Engineering Preprints">
+  <meta name="citation_pdf_url" content="https://aman179102.netlify.app/research/ebpf_telemetry_benchmarks_whitepaper.pdf">
+  <meta name="citation_abstract_html_url" content="https://aman179102.netlify.app/research/ebpf.html">
+  <meta name="citation_keywords" content="eBPF; BPF Ring Buffer; Microservices; Linux Kernel; Telemetry; High-Throughput Distributed Systems">
+  <meta name="citation_language" content="en">
+
+  <!-- Dublin Core Metadata -->
+  <meta name="DC.title" content="High-Throughput eBPF Telemetry Benchmarks in Distributed Microservice Architectures">
+  <meta name="DC.creator" content="Aman Kumar">
+  <meta name="DC.date" content="2026-11-24">
+  <meta name="DC.format" content="application/pdf">
+  <meta name="DC.language" content="en">
+  <meta name="DC.type" content="Text">
+
+  <!-- Schema.org ScholarlyArticle -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "High-Throughput eBPF Telemetry Benchmarks in Distributed Microservice Architectures",
+    "name": "High-Throughput eBPF Telemetry Benchmarks in Distributed Microservice Architectures",
+    "author": {
+      "@type": "Person",
+      "name": "Aman Kumar",
+      "url": "https://aman179102.netlify.app/",
+      "sameAs": [
+        "https://orcid.org/0009-0002-5219-5949",
+        "https://scholar.google.com/citations?user=cVhFkv4AAAAJ",
+        "https://www.wikidata.org/wiki/Q142288884",
+        "https://github.com/aman179102"
+      ]
+    },
+    "datePublished": "2026-11-24",
+    "url": "https://aman179102.netlify.app/research/ebpf.html",
+    "encoding": {
+      "@type": "MediaObject",
+      "contentUrl": "https://aman179102.netlify.app/research/ebpf_telemetry_benchmarks_whitepaper.pdf",
+      "encodingFormat": "application/pdf"
+    },
+    "about": ["eBPF", "Telemetry", "Microservices", "Linux Kernel", "Distributed Systems"]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+    .paper-hero { max-width: 840px; margin: 4rem auto 2rem; padding: 0 1.5rem; }
+    .paper-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(37,99,235,0.1); color: #2563eb; font-size: 0.8rem; font-weight: 600; padding: 0.35rem 0.75rem; border-radius: 9999px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem; }
+    .paper-title { font-size: 2.25rem; line-height: 1.25; font-weight: 800; color: var(--color-text); margin-bottom: 1.25rem; }
+    .paper-meta { display: flex; flex-wrap: wrap; gap: 1.25rem; font-size: 0.95rem; color: var(--color-muted); margin-bottom: 2rem; border-bottom: 1px solid var(--color-border); padding-bottom: 1.5rem; }
+    .paper-meta a { color: var(--color-accent); text-decoration: none; font-weight: 600; }
+    .paper-abstract { background: var(--color-card-bg, #f8fafc); border-left: 4px solid #2563eb; padding: 1.5rem; border-radius: 0 8px 8px 0; font-size: 1rem; line-height: 1.7; color: var(--color-text); margin-bottom: 2rem; }
+    .paper-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 3rem; }
+    .btn-download { display: inline-flex; align-items: center; gap: 0.5rem; background: #2563eb; color: #fff; font-weight: 600; padding: 0.8rem 1.6rem; border-radius: 8px; text-decoration: none; }
+    .btn-download:hover { background: #1d4ed8; }
+    .btn-secondary { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; border: 1px solid var(--color-border); color: var(--color-text); font-weight: 600; padding: 0.8rem 1.4rem; border-radius: 8px; text-decoration: none; }
+    .paper-body { font-size: 1.05rem; line-height: 1.8; color: var(--color-text); }
+    .paper-body h2 { font-size: 1.4rem; font-weight: 700; margin: 2rem 0 1rem; }
+    .paper-body pre { background: #0f172a; color: #f8fafc; padding: 1.25rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; margin: 1.5rem 0; }
+  </style>
+</head>
+<body>
+  <div class="paper-hero">
+    <a href="/research/" style="color: var(--color-muted); text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.35rem; margin-bottom: 1.5rem;">&larr; All Research Publications</a>
+    <div class="paper-badge">Academic Whitepaper &bull; IEEE Grade</div>
+    <h1 class="paper-title">High-Throughput eBPF Telemetry Benchmarks in Distributed Microservice Architectures</h1>
+    
+    <div class="paper-meta">
+      <div><strong>Author:</strong> <a href="/">Aman Kumar (@aman179102)</a></div>
+      <div><strong>ORCID:</strong> <a href="https://orcid.org/0009-0002-5219-5949" target="_blank" rel="noopener">0009-0002-5219-5949</a></div>
+      <div><strong>Scholar:</strong> <a href="https://scholar.google.com/citations?user=cVhFkv4AAAAJ" target="_blank" rel="noopener">cVhFkv4AAAAJ</a></div>
+      <div><strong>DOI:</strong> <a href="https://doi.org/10.5281/zenodo.24493466" target="_blank" rel="noopener">10.5281/zenodo.24493466</a></div>
+    </div>
+
+    <div class="paper-actions">
+      <a class="btn-download" href="/research/ebpf_telemetry_benchmarks_whitepaper.pdf" target="_blank">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        Download Full Paper (PDF)
+      </a>
+      <a class="btn-secondary" href="https://huggingface.co/datasets/aman179102/distributed-systems-benchmarks" target="_blank" rel="noopener">Benchmark Datasets</a>
+    </div>
+
+    <div class="paper-abstract">
+      <strong>Abstract:</strong> Capturing low-latency distributed traces in cloud microservices traditionally introduces unacceptable runtime overhead through user-space interceptors and sidecar proxies. In this paper, we evaluate kernel-space <strong>extended Berkeley Packet Filters (eBPF)</strong> utilizing memory-mapped circular ring buffers (<code>BPF_MAP_TYPE_RINGBUF</code>) to collect L4/L7 socket metrics non-invasively. Empirical evaluations demonstrate sub-0.5% CPU degradation under 500,000 requests per second.
+    </div>
+
+    <div class="paper-body">
+      <h2>I. Citation BibTeX</h2>
+      <pre><code>@article{kumar2026ebpf,
+  title={High-Throughput eBPF Telemetry Benchmarks in Distributed Microservice Architectures},
+  author={Kumar, Aman},
+  journal={Systems & Infrastructure Engineering Preprints},
+  year={2026},
+  publisher={Zenodo Research},
+  doi={10.5281/zenodo.24493466},
+  url={https://aman179102.netlify.app/research/ebpf.html}
+}</code></pre>
+    </div>
+  </div>
+</body>
+</html>
